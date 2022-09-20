@@ -45,7 +45,6 @@ class KeycloakOIDCPasswordAuth(Authentication):
             ),
             data={
                 "client_id": self.config.client_id,
-                "client_secret": self.config.client_secret,
                 "username": self.config.credentials["username"],
                 "password": self.config.credentials["password"],
                 "grant_type": self.GRANT_TYPE,
