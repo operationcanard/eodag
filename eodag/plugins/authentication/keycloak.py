@@ -46,7 +46,6 @@ class KeycloakOIDCPasswordAuth(Authentication):
             ),
             data={
                 "client_id": self.config.client_id,
-                "client_secret": self.config.client_secret,
                 "username": self.config.credentials["username"],
                 "password": self.config.credentials["password"],
                 "grant_type": self.GRANT_TYPE,
@@ -70,9 +69,7 @@ class KeycloakOIDCPasswordAuth(Authentication):
                 import traceback as tb
 
                 raise AuthenticationError(
-                    "Something went wrong while trying to get access token:\n{}".format(
-                        tb.format_exc()
-                    )
+                    "Something went wrong while trying to get access token:\n{}".format(tb.format_exc())
                 )
         return CodeAuthorizedAuth(
             response.json()["access_token"],
